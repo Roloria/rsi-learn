@@ -19,6 +19,7 @@ import {
   SAFETY_PRINCIPLES,
 } from "../data/architecture";
 import { Link } from "react-router-dom";
+import { usePageTitle } from "../lib/usePageTitle";
 
 const SAFETY_ICONS: Record<string, typeof Box> = {
   box: Box,
@@ -37,6 +38,7 @@ const STATUS_META: Record<string, { label: string; color: string }> = {
 const LAYER_ICONS = [FlaskConical, Bot, ArrowUp, Cpu];
 
 export default function ArchitecturePage() {
+  usePageTitle("架构蓝图");
   return (
     <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
       <div className="kicker mb-3">Architecture Blueprint</div>

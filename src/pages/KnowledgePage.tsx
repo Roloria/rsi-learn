@@ -13,10 +13,12 @@ import {
   KNOWLEDGE,
   KnowledgeCategory,
 } from "../data/knowledge";
+import { usePageTitle } from "../lib/usePageTitle";
 
 type Filter = KnowledgeCategory | "all";
 
 export default function KnowledgePage() {
+  usePageTitle("知识库");
   const [params] = useSearchParams();
   const [filter, setFilter] = useState<Filter>("all");
   const [query, setQuery] = useState("");

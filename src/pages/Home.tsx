@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import LoopCanvas from "../components/LoopCanvas";
 import { KNOWLEDGE } from "../data/knowledge";
+import { usePageTitle } from "../lib/usePageTitle";
 
 /* ---------------- 核心循环图 ---------------- */
 
@@ -52,7 +53,7 @@ function LoopDiagram() {
   const cur = LOOP_STEPS[active];
 
   return (
-    <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-4">
+    <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-center lg:gap-4">
       <svg viewBox="0 0 340 340" className="w-full max-w-[340px]">
         {/* 循环箭头 */}
         <defs>
@@ -239,6 +240,7 @@ const CAT_COLOR: Record<string, string> = {
 /* ---------------- 页面 ---------------- */
 
 export default function Home() {
+  usePageTitle("首页");
   const milestones = KNOWLEDGE.filter((k) => k.category === "system");
 
   return (

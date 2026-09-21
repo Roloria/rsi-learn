@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { LEARNING_PATH, PathResource } from "../data/path";
 import { loadProgress, saveProgress } from "../lib/storage";
+import { usePageTitle } from "../lib/usePageTitle";
 
 const RES_ICON: Record<PathResource["type"], typeof FileText> = {
   paper: FileText,
@@ -33,6 +34,7 @@ const RES_LABEL: Record<PathResource["type"], string> = {
 };
 
 export default function PathPage() {
+  usePageTitle("学习路径");
   const [done, setDone] = useState<Set<string>>(new Set());
 
   useEffect(() => {

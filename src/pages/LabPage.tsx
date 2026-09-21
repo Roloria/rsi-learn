@@ -30,6 +30,7 @@ import {
   stepRound,
 } from "../lib/engine";
 import { LabMeta, deleteLab, loadLabState, loadLabs, saveLab } from "../lib/storage";
+import { usePageTitle } from "../lib/usePageTitle";
 
 /* ---------------- 分数曲线 ---------------- */
 
@@ -184,6 +185,7 @@ function CandidateCard({
 /* ---------------- 页面 ---------------- */
 
 export default function LabPage() {
+  usePageTitle("实验场");
   const [exp, setExp] = useState<ExperimentState | null>(null);
   const [labs, setLabs] = useState<LabMeta[]>([]);
   const [tplId, setTplId] = useState(TEMPLATES[0].id);
