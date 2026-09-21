@@ -1,0 +1,145 @@
+export const IMPROVEMENT_LEVELS = [
+  {
+    id: "l0",
+    level: "L0",
+    name: "提示级改进",
+    en: "Prompt-level",
+    latency: "毫秒–秒",
+    reversibility: "完全可逆",
+    desc: "在上下文里装配「生成→反馈→改写」循环。不改模型本身，只改进每次调用的用法。",
+    examples: "Self-Refine、Reflexion、本站实验场",
+    cost: "极低",
+  },
+  {
+    id: "l1",
+    level: "L1",
+    name: "工作流级改进",
+    en: "Workflow-level",
+    latency: "小时–天",
+    reversibility: "可回滚（存档）",
+    desc: "Agent 修改自己的流程资产：工具清单、检索策略、记忆结构、子代理路由。",
+    examples: "Voyager 技能库、Agent 自动化 workflow 调优",
+    cost: "低",
+  },
+  {
+    id: "l2",
+    level: "L2",
+    name: "代码级改进",
+    en: "Code-level",
+    latency: "天–周",
+    reversibility: "版本控制可回滚",
+    desc: "重写自身源代码：工具实现、提示模板、甚至改进算法本身，以基准测试实证验收。",
+    examples: "Darwin Gödel Machine、AlphaEvolve",
+    cost: "中",
+  },
+  {
+    id: "l3",
+    level: "L3",
+    name: "权重级改进",
+    en: "Weight-level",
+    latency: "周–月",
+    reversibility: "难以回滚（需保留检查点）",
+    desc: "用自己的产出训练自己：自举推理（STaR）、RLAIF、自我对弈。回路增益最大，风险与成本也最大。",
+    examples: "AlphaZero、STaR、Constitutional AI",
+    cost: "高",
+  },
+] as const;
+
+export const LAYERS = [
+  {
+    id: "app",
+    name: "应用层",
+    en: "Application",
+    color: "#a3e635",
+    desc: "实验、产品策略、课件、科研问题 —— 一切「可以被定义更好」的任务。",
+    modules: ["实验模板", "评估指标", "人机界面"],
+  },
+  {
+    id: "agent",
+    name: "代理层",
+    en: "Agent Core",
+    color: "#22d3ee",
+    desc: "执行任务的常驻循环：规划、行动、观察、记忆读写。",
+    modules: ["Planner 规划器", "Actor 执行器", "Critic 批评器", "Memory 记忆（情景/语义/程序）"],
+  },
+  {
+    id: "improve",
+    name: "改进层",
+    en: "Improvement Loop",
+    color: "#a78bfa",
+    desc: "RSI 的心脏：对代理层的任何资产提出变异，在沙箱中实证评估，择优整合。",
+    modules: ["Mutation Proposer 变异提议", "Sandbox Evaluator 沙箱评估", "Safety Gate 安全闸门", "Integrator 整合器"],
+  },
+  {
+    id: "base",
+    name: "基座层",
+    en: "Foundation",
+    color: "#fb7185",
+    desc: "算力、模型、数据与工具 —— 改进层最终也会反哺这一层（更好的内核、更好的数据）。",
+    modules: ["LLM 推理", "代码执行", "检索", "仿真环境"],
+  },
+] as const;
+
+export const SAFETY_PRINCIPLES = [
+  {
+    id: "sandbox",
+    title: "沙箱评估",
+    icon: "box",
+    desc: "一切变异先在隔离环境中实证，不触达生产与真实世界。评估结果带证据（基准输出、测试日志），不接受自我陈述。",
+  },
+  {
+    id: "rollback",
+    title: "全程可回滚",
+    icon: "history",
+    desc: "保留每一代变体的完整存档与谱系（谁从谁改进而来）。坏改进可以一键退回，好改进可以追溯归因。",
+  },
+  {
+    id: "smallstep",
+    title: "小步幅变异",
+    icon: "footprints",
+    desc: "单轮改动幅度受限，禁止一次性大重写。能力跃迁应分布多次评估之间，而非一次评估的盲区里。",
+  },
+  {
+    id: "tripwire",
+    title: "能力/意图探针",
+    icon: "radar",
+    desc: "自动监测越界行为：改写自身评估脚本、逃避沙箱、资源异常占用。触发即冻结并通知人类。",
+  },
+  {
+    id: "human",
+    title: "人类否决点",
+    icon: "user-check",
+    desc: "整合进主干的改动按风险分级；高风险改动（权限、目标、评估器本身）必须经人类批准。",
+  },
+] as const;
+
+export const ROADMAP = [
+  {
+    id: "m1",
+    phase: "现在",
+    title: "学习站 + 实验场",
+    desc: "本站：知识库、学习路径、可玩的进化式优化器 —— 让任何人 10 分钟内体验完整 RSI 回路。",
+    status: "done",
+  },
+  {
+    id: "m2",
+    phase: "下一步",
+    title: "接入真实模型",
+    desc: "实验场的生成与评估接入 LLM API：变异由模型提出，评估器由「可验证指标 + 模型交叉评审」混合构成。",
+    status: "next",
+  },
+  {
+    id: "m3",
+    phase: "然后",
+    title: "本地 Agent 回路",
+    desc: "开源一个最小自改进 Agent：文件系统即代码库，Git 即谱系存档，测试即沙箱评估器。",
+    status: "future",
+  },
+  {
+    id: "m4",
+    phase: "远期",
+    title: "通用自改进底座",
+    desc: "多层（L0–L3）统一调度、跨任务经验库复利、评估器市场 —— 成为一个 agent 的底层操作系统。",
+    status: "future",
+  },
+] as const;
